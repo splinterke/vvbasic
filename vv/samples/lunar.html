@@ -1,0 +1,142 @@
+<html>
+<head><title>VVBasic: Lunar Lander</title></head>
+<body>
+<pre>
+// Based on the 1970's classic by Dave Ahl.
+// Updated for VVBasic by Dan Frost, 2004.
+
+PRINT "            LUNAR LANDER"
+PRINT
+TEXT WantInstructions
+TEXT ReadyToPlay
+NUMBER Dummy
+INPUT NOECHO
+  "Do you want instructions (Y or N)? " WantInstructions
+  WHEN WantInstructions <> "Y" AND WantInstructions <> "N"
+  COMPLAIN "Please answer Y or N."
+IF WantInstructions = "Y" THEN
+  LET Dummy = PrintInstructions()
+  INPUT NOECHO "Ready to play? " ReadyToPlay  // accept any response
+ENDIF
+
+CLEAR
+PRINT "SEC", "FEET", "SPEED", "FUEL"
+PRINT
+
+NUMBER Burn                   // amount burned this second
+NUMBER RemainingFuel = 150
+NUMBER Seconds = 0
+NUMBER Height = 1000
+NUMBER Velocity = 50         // positive is towards the moon
+NUMBER NextVelocity
+NUMBER GravityPull = 5       // in feet/sec/sec, this doesn't change
+
+REPEAT   // once for each second
+   PRINT Seconds, Height, Velocity, RemainingFuel
+   IF RemainingFuel > 0 THEN
+      INPUT NOECHO "How much fuel to burn? " Burn
+      // Make sure Burn is in valid range (>0, <RemainingFuel, <30)
+      IF Burn < 0 THEN LET Burn = 0 ENDIF
+      IF Burn > 30 THEN LET Burn = 30 ENDIF
+      IF Burn > RemainingFuel THEN LET Burn = RemainingFuel ENDIF
+      IF RemainingFuel = 0 THEN
+         PRINT"**** OUT OF FUEL ****"
+      ENDIF
+   ELSE
+      LET Burn = 0
+   ENDIF
+
+   LET NextVelocity = Velocity + GravityPull - Burn
+   LET RemainingFuel = RemainingFuel - Burn
+   LET Height = Height - Average(Velocity, NextVelocity)
+   IF Height <= 0 THEN BREAK ENDIF  // Hit the surface?
+   LET Seconds = Seconds + 1
+   LET Velocity = NextVelocity
+ENDREPEAT
+
+// Calculate exact time and speed at contact with moon's surface
+LET Height = Height + Average(Velocity, NextVelocity)
+NUMBER D
+IF Burn = GravityPull THEN
+   LET D = Height / Velocity
+ELSE
+   LET D = (0 - Velocity + Pow(Velocity*Velocity+Height*(10-2*Burn), 0.5)) /
+           (GravityPull-Burn)
+ENDIF
+LET Velocity = Velocity + ((GravityPull - Burn) * D)
+
+PRINT "***** CONTACT *****"
+PRINT "Touchdown at " Round(Seconds + D, 2) " seconds."
+PRINT "Landing velocity = " Round(Velocity, 2) " feet/sec."
+PRINT RemainingFuel " units of fuel remaining."
+
+IF Velocity = 0 THEN
+   PRINT "Congratulations! A perfect landing!!"
+   PRINT "Your license will be renewed.............later."
+ENDIF
+
+
+IF Velocity > 50 THEN
+   PRINT "You totalled an entire mountain !!!!!"
+ELSE
+   IF Velocity > 30 THEN
+      PRINT "Your ship is a wreck !!!!!"
+   ELSE
+      IF Velocity > 10 THEN
+         PRINT "You blasted a huge crater !!!!!"
+      ELSE
+         IF Velocity > 5 THEN
+            PRINT "Your ship is damaged and won't be able to leave !!!!!"
+         ENDIF
+      ENDIF
+   ENDIF
+ENDIF
+
+IF Velocity < -2 OR Velocity > 2 THEN
+   PRINT "You blew it!!!!!!"
+   PRINT "Your family will be notified..............by post."
+   PRINT
+   PRINT
+ENDIF
+
+PRINT "--------THE END--------"
+
+FUNCTION PrintInstructions()
+  PRINT
+  PRINT "You are landing on the moon and and have taken"
+  PRINT "over manual control 1000 feet above a good"
+  PRINT "landing spot. You have a downward velocity of"
+  PRINT "50 feet/sec. 150 units of fuel remain."
+  PRINT
+  PRINT "Here are the rules to land your APOLLO space-craft:"
+  PRINT
+  PRINT "(1) After each second the height, velocity, and"
+  PRINT "    remaining fuel will be reported via DIGBY,"
+  PRINT "    your on-board computer."
+  PRINT "(2) After the report a dialog box will appear."
+  PRINT "    Enter the number of units of fuel you wish"
+  PRINT "    to burn during the next second. Each unit"
+  PRINT "    of fuel will slow your descent by 1 foot/sec."
+  PRINT "(3) The maximum thrust of your engine is 30"
+  PRINT "    feet/sec/sec or 30 units of fuel per second."
+  PRINT "(4) When you contact the lunar surface, your"
+  PRINT "    descent engine will automatically shut down"
+  PRINT "    and you will be given a report of your landing"
+  PRINT "    speed and remaining fuel."
+  PRINT "(5) If you run out of fuel your second by second "
+  PRINT "    report will continue until you contact the "
+  PRINT "    lunar surface."
+  PRINT
+  PRINT "Beginning landing procedure.........."
+  PRINT
+  PRINT "DIGBY WISHES YOU GOOD LUCK !!!!!!!"
+  PRINT
+  RETURN 0
+ENDFUNCTION
+
+FUNCTION Average(NUMBER N1, NUMBER N2)
+  RETURN (N1 + N2) / 2
+ENDFUNCTION
+</pre>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+<head><title>VVBasic's LET command</title></head>
+<body>
+
+<h2>LET</h2>
+
+The value of a variable can be changed using LET.  Some examples:
+<P>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>NUMBER height<br>
+				TEXT name = "Denver"<br>
+				LET height = 5280<br>
+				PRINT "The height of " name " is " height&nbsp;<br>
+				LET height = (40 + 300) / (20 - 3)<br>
+				LET name = "Albany"<br>
+				PRINT "The height of " name " is " height<br>
+			</tt>
+		<td><tt>	The height of Denver is 5280&nbsp; <br>
+					The height of Albany is 20
+			</tt>
+</table>
+
+<p>
+A LET command always has four parts:
+<OL>
+<LI> <tt>LET</tt>
+<LI> the variable name
+<LI> the equals sign
+<LI> the value assigned to the variable.
+</OL>
+<P>
+
+It is often useful to give a variable a new value based on its old value.
+<P>
+
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>NUMBER MarksAge = 12<br>
+				PRINT "Mark is now " MarksAge<br>
+				LET MarksAge = MarksAge + 1<br>
+				PRINT "On his next birthday he'll be " MarksAge&nbsp;<br>
+			</tt>
+		<td><tt>	Mark is now 12 <br>
+					On his next birthday he'll be 13 &nbsp;
+			</tt>
+</table>
+
+<P>
+
+Notice that on the third line of this program, 1 was added to
+<tt>MarksAge</tt>, changing the value of <tt>MarksAge</tt>,
+
+<P>
+VVBasic doesn't care whether the letters in variable names
+are upper case or lower case.  The following program is hard
+to read, but works fine:
+<P>
+
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>NUMBER Distance<br>
+				LET distance = 1000<br>
+				LET DISTANCE = disTance * 2<br>
+				PRINT "Distance is " dIsTaNCE&nbsp;
+			</tt>
+		<td><tt>	Distance is 2000 &nbsp;<br>
+			</tt>
+</table>
+<P>
+In this program, <tt>Distance</tt>, <tt>distance</tt>,<tt>DISTANCE</tt>,
+and <tt>dIsTaNCE</tt> are all names for the same variable.
+<P>
+However, VVBasic is <it>very</it> picky that you spell a variable
+in the same way every time you use it.
+The following program will not run -- can you see why?
+<P>
+
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>NUMBER DistanceToTheirHouse = 100<br>
+				PRINT "Distance is " DistanceToThereHouse&nbsp;
+			</tt>
+		<td><tt>	<font color=red>Nothing printed!</font>&nbsp;
+			</tt>
+</table>
+<P>
+
+</body>
+</html>
+

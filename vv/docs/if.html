@@ -1,0 +1,191 @@
+<html>
+<head><title>VVBasic's IF</title></head>
+<body>
+
+<h2>IF, THEN, ELSE, ENDIF</h2>
+
+The IF command is used to execute one or more other commands only
+if some test is true.  For example:
+
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>
+            NUMBER A = 12<br>
+            NUMBER B = 7<br>
+            IF A > B THEN<br>
+            &nbsp;&nbsp;&nbsp;PRINT "A is greater than B"&nbsp;<br>
+            ENDIF<br>
+            PRINT "Hello"
+            </tt>
+		<td><tt>A is greater than B&nbsp;<br>
+				Hello</tt>
+<tr>	<td><tt>
+            NUMBER A = 12<br>
+            NUMBER B = 107<br>
+            IF A > B THEN<br>
+            &nbsp;&nbsp;&nbsp;PRINT "A is greater than B"<br>
+            ENDIF<br>
+            PRINT "Hello"
+            </tt>
+		<td><tt>Hello</tt>
+</table>
+<p>
+In the above examples, the test is whether the value in
+variable A is greater than the value in variable B.
+In the first example, this is true, and the <tt>PRINT</tt> statement
+inside the <tt>IF</tt> - <tt>ENDIF</tt> block is executed.
+In the second example, the test <tt>A &gt; B</tt> is not
+true, and the <tt>PRINT</tt> statement is skipped.
+In both cases the second <tt>PRINT</tt> is executed, since
+it is outside the control of the <tt>IF</tt>.
+
+<P>
+An <tt>IF</tt> statement can also have an <tt>ELSE</tt> part,
+which is executed if the test is not true.
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>
+            TEXT Name = "Bill"<br>
+            IF Name = "Bill" THEN<br>
+            &nbsp;&nbsp;&nbsp;PRINT "Hi, Bill!"<br>
+            ELSE<br>
+            &nbsp;&nbsp;&nbsp;LET OtherCount = OtherCount + 1&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;PRINT "What's your name?"<br>
+            ENDIF<br>
+            PRINT "Please enter."
+            </tt>
+		<td><tt>Hi, Bill!<br>
+				Please enter.</tt>
+<tr>	<td><tt>
+            TEXT Name = "Sandy"<br>
+            IF Name = "Bill" THEN<br>
+            &nbsp;&nbsp;&nbsp;PRINT "Hi, Bill!"<br>
+            ELSE<br>
+            &nbsp;&nbsp;&nbsp;LET OtherCount = OtherCount + 1&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;PRINT "What's your name?"<br>
+            ENDIF<br>
+            PRINT "Please enter."
+            </tt>
+		<td><tt>What's your name?<br>
+				Please enter.</tt>
+</table>
+<p>
+
+In this example, the test checks whether two text strings are equal.
+If they are (as in the first case), the first <tt>PRINT</tt> is executed.
+If they aren't (as in the second case), then the <tt>LET</tt> and
+the second <tt>PRINT</tt> are is executed.
+
+<P>
+Note that with every <tt>IF</tt> command, there is always
+one <tt>THEN</tt>, optionally one <tt>ELSE</tt>, and finally
+an <tt>ENDIF</tt>.  Any number of VVBasic statements can be
+placed after the <tt>THEN</tt> and after the <tt>ELSE</tt>.
+You can even put an <tt>IF</tt> inside another <tt>IF</tt>,
+as in this example:
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>
+			REM Compare two prices.<br>
+			NUMBER Price1<br>
+			NUMBER Price2<br>
+			INPUT "Price #1: " Price1, "Price #2: " Price2<br>
+            IF Price1 = Price2 THEN<br>
+            &nbsp;&nbsp;&nbsp;IF PRICE1 = 0 THEN<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT "Equal, both 0."<br>
+            &nbsp;&nbsp;&nbsp;ELSE<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT "Equal, not 0."<br>
+            &nbsp;&nbsp;&nbsp;ENDIF<br>
+            ELSE<br>
+            &nbsp;&nbsp;&nbsp;IF PRICE1 < PRICE2 THEN<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT "Price 1 is less."<br>
+            &nbsp;&nbsp;&nbsp;ELSE<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT "Price 2 is less."<br>
+            &nbsp;&nbsp;&nbsp;ENDIF<br>
+            ENDIF<br>
+            PRINT "All Done."
+            </tt>
+		<td>(Assume the user entered 10.99 for Price 1 and 16.50 for Price 2.)
+		    <br>&nbsp;<br>
+		    <tt>Price 1 is less.<br>
+				All Done</tt>
+</table>
+<p>
+Notice how in this program the code has been indented so that the
+<tt>IF</tt>, <tt>ELSE</tt>, and <tt>ENDIF</tt> that go with each other
+start in the same column.  This makes the code much easier to
+understand.
+
+<h3>The IF's test</h3>
+
+Every<tt>IF</tt> has a test to determine whether some commands are
+executed or not.
+The test has to be something which is true or false.
+For instance, <tt>A < B</tt> is a good test because it is
+true or false.  You cannot use <tt>103</tt> or <tt>"stomach"</tt>
+as <tt>IF</tt> tests, because those are number or string
+values.
+Good <tt>IF</tt> tests are made using comparison operators,
+shown in the following table.
+<p>
+<table border cellpadding=2>
+<th>Operator <th>Name		<th>Example
+<tr>	<td><tt>=</tt>		<td>equals	<td><tt>IF A = 2 * B THEN</tt>
+<tr>	<td><tt> < </tt>	<td>less than	<td><tt>IF C / 2 < D + 4 THEN</tt>
+<tr>	<td><tt> <= </tt>	<td>less than or equal	<td><tt>IF COST <= 10.00 THEN</tt>
+<tr>	<td><tt> >  </tt>	<td>greater than	<td><tt>IF X > Y THEN</tt>
+<tr>	<td><tt> >= </tt>	<td>greater than or equal&nbsp;
+											<td><tt>IF Round(A,2) >= A THEN&nbsp;</tt>
+<tr>	<td><tt> <> </tt>	<td>not equals	<td><tt>IF AGE <> 18 THEN</tt>
+</table>
+<P>
+The operators in the table above can be used to compare
+text strings as well as numbers.
+When two strings are compared, the one that is "less" is
+the one that would come first in the dictionary.
+<P>
+More complex tests can be made by constructing simpler tests
+with <tt>AND</tt> and <tt>OR</tt>.
+When two tests are combined with <tt>AND</tt>,
+then <i>both</i> tests have to be true for the entire combined
+test to be true.
+When two tests are combined with <tt>OR</tt>,
+then <i>either one</i> of the two tests (or both of them)
+has to be true for the entire combined test to be true.
+Here are some examples:
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>
+            NUMBER A = 12<br>
+            NUMBER B = 7<br>
+            NUMBER C = 9<br>
+            IF A > B AND B > C THEN<br>
+            &nbsp;&nbsp;&nbsp;PRINT "A > B and B > C"&nbsp;<br>
+            ELSE<br>
+            &nbsp;&nbsp;&nbsp;PRINT "Not in order"<br>
+            ENDIF<br>
+            </tt>
+		<td><tt>Not in order&nbsp;<br>
+		    </tt>
+<tr>	<td><tt>
+            NUMBER A = 10<br>
+            NUMBER B = 5<br>
+            NUMBER C = 20<br>
+            IF A < B OR A < C THEN<br>
+            &nbsp;&nbsp;&nbsp;PRINT "A not the biggest"&nbsp;<br>
+            ELSE<br>
+            &nbsp;&nbsp;&nbsp;PRINT "A is the biggest"<br>
+            ENDIF<br>
+            </tt>
+		<td><tt>A not the biggest&nbsp;</tt>
+</table>
+<p>
+
+
+
+</body>
+</html>

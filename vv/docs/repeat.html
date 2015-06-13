@@ -1,0 +1,149 @@
+<html>
+<head><title>VVBasic's REPEAT command</title></head>
+<body>
+<h2>REPEAT, ENDREPEAT, and BREAK</h2>
+
+Code between <tt>REPEAT</tt> and <tt>ENDREPEAT</tt> can be
+executed multiple times.
+Starting right after the <tt>REPEAT</tt>, each command is
+executed, and after the last command before the <tt>ENDREPEAT</tt>,
+the computer goes back to the first command in the
+<tt>REPEAT</tt> - <tt>ENDREPEAT</tt> "block."
+Commands like this that can be executed repeatedly are sometimes
+called a <i>loop</i>.
+IF a <tt>BREAK</tt> command is executed, then the computer goes
+straight to the command after the <tt>ENDREPEAT</tt>.
+Here are several examples:
+
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>
+<td><tt>
+    CLEAR <br>
+    PRINT "Square roots from 1 to 10" <br>
+    NUMBER N = 1 <br>
+    REPEAT <br>
+    &nbsp;&nbsp;PRINT N, Round(Pow(N, 0.5), 3) <br>
+    &nbsp;&nbsp;IF N = 10 THEN <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;BREAK <br>
+    &nbsp;&nbsp;ENDIF <br>
+    &nbsp;&nbsp;LET N = N + 1 <br>
+    ENDREPEAT <br>
+    PRINT "Done." <br>
+    &nbsp;
+    </tt>
+<td><tt>
+Square roots from 1 to 10 <br>
+    1  &nbsp;&nbsp;&nbsp;  1 <br>
+    2  &nbsp;&nbsp;&nbsp;  1.414 <br>
+    3  &nbsp;&nbsp;&nbsp;  1.732 <br>
+    4  &nbsp;&nbsp;&nbsp;  2 <br>
+    5  &nbsp;&nbsp;&nbsp;  2.236 <br>
+    6  &nbsp;&nbsp;&nbsp;  2.449 <br>
+    7  &nbsp;&nbsp;&nbsp;  2.646 <br>
+    8  &nbsp;&nbsp;&nbsp;  2.828 <br>
+    9  &nbsp;&nbsp;&nbsp;  3 <br>
+    10 &nbsp;&nbsp;        3.162 <br>
+    Done.
+    </tt>
+<tr>
+<td><tt>
+    NUMBER X = 3 <br>
+	REPEAT<br>
+	&nbsp;&nbsp;&nbsp;LET X = X / 2<br>
+    &nbsp;&nbsp;&nbsp;PRINT X <br>
+    &nbsp;&nbsp;&nbsp;IF X < 0.1 THEN <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BREAK <br>
+    &nbsp;&nbsp;&nbsp;ENDIF <br>
+    ENDREPEAT <br>
+    PRINT "X is now " X
+    </tt>
+<td><tt>
+    1.5 <br>
+    0.75 <br>
+    0.375 <br>
+    0.1875 <br>
+    0.09375 <br>
+    X is now 0.09375
+    </tt>
+<tr>
+<td><tt>
+    CLEAR <br>
+    PRINT "Guess my number!" <br>
+    NUMBER MyNumber <br>
+    REPEAT <br>
+    &nbsp;&nbsp;LET MyNumber = Random(1,5) <br>
+    &nbsp;&nbsp;REPEAT <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;NUMBER YourGuess <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;INPUT "Enter your guess:" YourGuess <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;IF YourGuess = MyNumber THEN <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT "That's it!" <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BREAK <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;ELSE <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT "No, try again." <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;ENDIF <br>
+    &nbsp;&nbsp;ENDREPEAT <br>
+    &nbsp;&nbsp;TEXT PlayAgain <br>
+    &nbsp;&nbsp;INPUT "Play again? " PlayAgain <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;WHEN PlayAgain <> "Y" AND <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PlayAgain <> "N" <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;COMPLAIN "Please enter Y or N" <br>
+    &nbsp;&nbsp;IF PlayAgain = "N" THEN <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;BREAK <br>
+    &nbsp;&nbsp;ENDIF <br>
+    ENDREPEAT <br>
+    PRINT "Thanks for playing." <br>
+    </tt>
+<td><tt>
+    Guess my number! <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Enter your guess: 3 <br>
+    No, try again. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Enter your guess: 2 <br>
+    No, try again. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Enter your guess: 1 <br>
+    That's it! <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Play again?  Y <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Enter your guess: 4 <br>
+    That's it! <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Play again?  Y <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Enter your guess: 3 <br>
+    No, try again. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Enter your guess: 5 <br>
+    That's it! <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Play again?  N <br>
+    Thanks for playing.
+    </tt>
+</table>
+<p>
+Notice that in every example the <tt>BREAK</tt> command is
+inside an <tt>IF</tt>.  That makes sense, because if the
+<tt>BREAK</tt> were not in an <tt>IF</tt> it would be
+executed on the first time through the loop, and there
+would be no repetition.
+<tt>BREAK</tt>s are almost always found inside an <tt>IF</tt>
+command. (And also inside a <tt>REPEAT</tt> - <tt>ENDREPEAT</tt>
+block -- it is an error to use <tt>BREAK</tt> anywhere else.)
+
+<p>
+Also notice that the lines between <tt>REPEAT</tt> and
+<tt>ENDREPEAT</tt> are indented.  This is not required by
+the computer, but it is extremely helpful for making the
+program readable.
+
+<P>
+The third example above has one
+<tt>REPEAT</tt> - <tt>ENDREPEAT</tt> within another.
+Each loop has its own <tt>BREAK</tt>.
+The outer loop is executed once for each time the
+game is played, and the inner loop is executed once
+for each guess the player makes.
+Study this program carefully and make sure you
+understand it.
+
+
+
+
+
+</body>
+</html>

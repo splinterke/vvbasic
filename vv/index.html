@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>VVBasic - Computer Science Education Foundation</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+
+	<style type="text/css">
+	#doc{width:270px;}
+	#sample{width:270px;}
+	#input{width:350px; height:350px; line-height: 18px; font-size:16px; margin-top:40px;}
+	#output{width:350px; height:350px; line-height: 18px; font-size:16px; margin-top:40px;}
+	#run{position:relative; margin-top:20px;}
+	#clear{position:relative; margin-top:20px;}
+	</style>
+	
+</head>
+
+<body bgcolor = #dddddd>
+
+<center>
+<h1>Welcome to VVBasic!</h1>
+<h2>2015 edition</h2>
+</center>
+
+<form name="vvb">
+
+<center>
+
+<select name="docs" id="doc"
+onchange="codeURL=vvb.docs.options[vvb.docs.selectedIndex].value;if (codeURL != 'x') {vvb.docs.selectedIndex = 0; window.open(codeURL, 'Docs', 'width=600,height=400,resizable=yes,scrollbars=yes');}">
+  <option value="x">VVBasic Documentation
+  <option value="docs/overview.html">Overview of VVBasic
+  <option value="docs/print.html">PRINT and CLEAR commands
+  <option value="docs/number-text.html">Creating variables with NUMBER and TEXT
+  <option value="docs/let.html">Using LET to assign values to variables.
+  <option value="docs/if.html">IF, THEN. ELSE, and creating IF tests
+  <option value="docs/input.html">INPUT, with WHEN and COMPLAIN
+  <option value="docs/repeat.html">REPEAT, ENDREPEAT, and BREAK
+  <option value="docs/for.html">FOR and ENDFOR
+</select>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<select name="samples" id="sample"
+onchange="codeURL=vvb.samples.options[vvb.samples.selectedIndex].value;if (codeURL != 'x') {vvb.samples.selectedIndex = 0; window.open(codeURL, 'Samples', 'width=600,height=400,resizable=yes,scrollbars=yes');}">
+  <option value="x">Sample VVBasic code
+  <option value="samples/guess-a-number1.html">Guess a number (human guesses)
+  <option value="samples/lunar.html">Lunar Lander
+  <!--
+  <option value="samples/guess-a-number2.txt">Guess a number (computer guesses)
+  -->
+</select>
+
+</center>
+
+</form>
+
+
+<form name="program">
+
+<center>
+	<textarea id="input" name="command" wrap="off">Write some code here</textarea>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<textarea id="output" name="result" wrap="off" readonly>Result will appear here</textarea>
+</center>
+
+<center>
+	<button id="run" type="button" onclick="Run()">Run</button>
+	&nbsp;&nbsp;
+	<button id="clear" type="button" onclick="Clear()">Clear</button>
+</center>
+
+</form>
+
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="Scanner.js"></script>
+<script type="text/javascript" src="NodeTree.js"></script>
+<script type="text/javascript" src="Parser.js"></script>
+<script type="text/javascript" src="Runner.js"></script>
+
+</body>
+</html>
+

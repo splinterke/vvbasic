@@ -1,0 +1,51 @@
+<html>
+<head><title>VVBasic: Cool Drawings</title></head>
+<body>
+<pre>
+// The idea and formula for this amazing drawing
+// program come from the NINA applet, at
+// http://www.washington.edu/bibsys/mattf/nina/
+
+// The NumLines value controls how many line
+// segments are drawn.  Values between 10 and
+// 1000 work well. The A and B parameters, in
+// conjunction with NumLines, determine the
+// shape in mysterious ways.
+
+// Try NumLines = 300, A = 119, B = 121 to start.
+
+CLEAR
+NUMBER NumLines
+NUMBER A
+NUMBER B
+NUMBER StartX = 2
+NUMBER StartY = 0
+NUMBER EndX
+NUMBER EndY
+REPEAT
+  INPUT "NumLines: " NumLines,
+        "A: " A,
+        "B: " B
+     WHEN NumLines = 0
+     COMPLAIN "NumLines cannot be 0!"
+     WHEN NumLines < 0
+     COMPLAIN "NumLines cannot be negative!"
+  DRAW CLEAR
+  FOR I = 1 TO NumLines
+    LET EndX = cos(360 * A * I / NumLines)
+             + cos(360 * B * I / NumLines)
+    LET EndY = sin(360 * A * I / NumLines)
+             + sin(360 * B * I / NumLines)
+    // StartX, StartY, EndX, EndY all have values
+    // between -2 and +2.  Multiply by 25 and
+    // add 50 to enlarge and center.
+    DRAW Line #I AT StartX*25+50, StartY*25+50
+                 TO EndX*25+50, EndY*25+50
+    LET StartX = EndX
+    LET StartY = EndY
+    PAUSE 0.01
+  ENDFOR
+ENDREPEAT
+</pre>
+</body>
+</html>

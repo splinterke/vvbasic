@@ -1,0 +1,36 @@
+<html>
+<head><title>VVBasic: Guess a number</title></head>
+<body>
+<pre>
+REM The I'm thinking of a number game.
+REM In this version, you have to guess the
+REM computer's number.
+
+NUMBER LowestNumber = 1
+NUMBER HighestNumber = 100
+NUMBER ComputersNumber = RANDOM(LowestNumber, HighestNumber)
+NUMBER PersonsGuess
+
+CLEAR
+PRINT "Try to guess the computer's number!"
+PRINT "The computer is thinking of a number between "
+      LowestNumber " and " HighestNumber
+
+REM Go through the REPEAT loop once for each guess.
+REPEAT
+  INPUT "Enter your guess: " PersonsGuess
+  IF PersonsGuess = ComputersNumber THEN
+    PRINT "That's it!!"
+    BREAK
+  ENDIF
+  IF PersonsGuess > ComputersNumber THEN
+    PRINT "Your guess was too high."
+  ENDIF
+  IF PersonsGuess < ComputersNumber THEN
+    PRINT "Your guess was too low."
+  ENDIF
+ENDREPEAT
+PRINT "Thanks for playing!"
+</pre>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<html>
+<head><title>VVBasic's built in functions</title></head>
+<body>
+<h2>Built in functions</h2>
+
+A number of functions are built in to VVBasic.
+A <i>function</i> transforms one or more values into another value.
+For instance, suppose you want to change "Hello" to another
+text string with the same letters, all in upper case.
+You can use the ToUpper function to do this:
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>PRINT "Hello", ToUpper("Hello") &nbsp;</tt>	<td><tt>Hello   HELLO &nbsp;</tt>
+</table>
+<p>
+
+The information inside the parentheses
+(<tt>"Hello"</tt> in the example above)
+is called the <i>argument</i> or <i>arguments</i>.
+The value of the function, based on the argument,
+is called the function's <i>return value</i>.
+A function creates a return value, but it
+doesn't change its argument.
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>
+<td><tt>
+	TEXT Name = "George Washington"&nbsp;<br>
+	PRINT ToUpper(Name) <br>
+	PRINT Name <br>
+	</tt>
+<td><tt>
+	GEORGE WASHINGTON&nbsp; <br>
+	George Washington <br>
+	</tt>
+</table>
+<P>
+
+In the above example, notice that
+the value of the <tt>Name</tt> variable was not changed
+by <tt>ToUpper</tt>.
+
+<P>
+
+Here's a list of the functions built in to VVBasic:
+<p>
+<p>
+<table border cellpadding=2>
+<th>Function Name	<th>Description	<th>The value of this	<th>is this
+<tr>
+ <td><tt>ToUpper</tt>
+ <td>Makes all letters uppercase.
+ <td><tt>ToUpper("Jim")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>
+ <td><tt>JIM </tt>
+<tr>
+ <td><tt>ToLower
+  <td>Makes all letters lowercase.
+  <td><tt>ToLower("Jim")
+  <td><tt>jim
+<tr>
+ <td><tt>Length
+  <td>Gives the length of a text string.
+  <td><tt>Length("Clark Kent") <br> Length("") <br> Length("Apple&nbsp;&nbsp;")
+  <td><tt>10 <br> 0 <br> 7
+<tr>
+ <td><tt>Round
+ <td>Rounds the fractional part of a number.
+     The first argument is the number to be rounded,
+     the second argument tells how many places to the
+     right of the decimal point the result should have.
+ <td><tt>Round(12.3456, 0) <br>
+     Round(12.3456, 1) <br>
+     Round(12.3456, 3) <br>
+     Round(12.3456, 8) <br>
+ <td><tt>12 <br>
+     12.3 <br>
+     12.346 <br>
+     12.3456 <br>
+<tr>
+ <td><tt>Random
+ <td>Returns a whole number greater than or equal to the first
+     argument, and less than or equal to the second argument.
+     Every whole number in this range is equally likely to be
+     the return value.
+ <td><tt>Random(1, 100) <br>
+     Random(1, 100) <br>
+     Random(1, 100) <br>
+     Random(1, 100) <br>
+ <td><tt>92 <br>
+     17 <br>
+     19 <br>
+     30 <br>
+<tr>
+ <td><tt>Log
+ <td>Gives the logarithm of the first argument to the base
+ of the second argument.
+ <td><tt>Log(8, 2) <br>
+Log(53, 10) <br>
+<td><tt>3 <br>
+1.7242759 <br>
+<tr>
+<td><tt>Exp
+<td>Raises the first argument to the power of the second argument.
+<td><tt>Exp(10, 2) <br>
+Exp(2, 0.5) <br>
+<td><tt>100 <br>
+1.4141356 <br>
+<tr>
+<td><tt>Sin
+<td>Gives the sine of the argument, which is a number of degrees.
+<td><tt>Sin(0) <br>
+Sin(45) <br>
+<td><tt>0 <br>
+0.7071067 <br>
+<tr>
+<td><tt>Cos
+<td>Gives the cosine of the argument, which is a number of degrees.
+<td><tt>Cos(0) <br>
+Cos(45) <br>
+<td><tt>1 <br>
+0.7071067
+<tr>
+<td><tt>Tan
+<td>Gives the tangent of the argument, which is a number of degrees.
+<td><tt>Tan(0) <br>
+Tan(45) <br>
+<td><tt>0 <br>
+1 <br>
+</table>
+
+
+
+
+</body>
+</html>

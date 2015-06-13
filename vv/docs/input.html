@@ -1,0 +1,168 @@
+<html>
+<head><title>VVBasic's INPUT command</title></head>
+<body>
+
+<h2>INPUT</h2>
+
+The <tt>INPUT</tt> command is used to ask the user to enter
+information.
+The information the user enters becomes the value of
+one or more variables.
+When the <tt>INPUT</tt> command executes, a dialog
+box appears, as in the following example:
+
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Dialog Box
+<tr>	<td><tt>TEXT Name <br>
+				INPUT "Enter your name" Name</tt>
+		<td>&nbsp;<br>&nbsp;<img src="input1.gif">&nbsp;<br>&nbsp;
+<tr>	<td><tt>TEXT Name <br>
+                NUMBER Age = 12 <br>
+                TEXT Food = "Pizza" <br>
+                INPUT "Enter your name" Name, <br>
+                &nbsp;&nbsp;&nbsp;"Enter your age" Age, <br>
+                &nbsp;&nbsp;&nbsp;"Enter your favorite food" Food &nbsp;<br>
+				</tt>
+		<td>&nbsp;<br>&nbsp;<img src="input2.gif">&nbsp;<br>&nbsp;
+</table>
+<p>
+
+In the first example above, if the user types <tt>Mary</tt>
+into the text area and clicks on the OK button, then the
+variable <tt>Name</tt> will have the value "Mary".
+If the user clicks on the Cancel button, the program stops.
+<p>
+The second example shows that the user can be asked for
+more than one value.
+The command <tt>INPUT</tt> is followed by a "prompt string"
+in quotation marks, and then a variable name.
+Multiple prompts and variables can be given, separated by
+commas.
+If a variable already has a value
+(for example, the value of <tt>Age</tt> is <tt>12</tt>), then
+that value shows up in the text field.
+
+<p>
+Unless Cancel is selected, the <tt>INPUT</tt> command also
+prints an "echo" of the prompts and the values entered in the Output window.
+For example, with the second example above, the following
+might be printed:
+<pre>
+          Enter your name Mike
+          Enter your age 15
+          Enter your favorite food Scrambled eggs
+</pre>
+
+<p>
+The computer makes sure that no input fields are left
+blank, and that numeric variables such as <tt>Age</tt>
+have numbers entered, and not text.
+In the next examples, the user pressed OK with nothing
+entered for name (in the first case), and with a
+non-numeric value for age (in the second case).
+The computer put a message in the upper left of the
+dialog box.
+
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Dialog Box
+<tr>	<td><tt>TEXT Name <br>
+				INPUT "Enter your name" Name</tt>
+		<td>&nbsp;<br>&nbsp;<img src="input1a.gif">&nbsp;<br>&nbsp;
+<tr>	<td><tt>TEXT Name <br>
+                NUMBER Age = 12 <br>
+                TEXT Food = "Pizza" <br>
+                INPUT "Enter your name" Name, <br>
+                &nbsp;&nbsp;&nbsp;"Enter your age" Age, <br>
+                &nbsp;&nbsp;&nbsp;"Enter your favorite food" Food &nbsp;<br>
+				</tt>
+		<td>&nbsp;<br>&nbsp;<img src="input2a.gif">&nbsp;<br>&nbsp;
+</table>
+<p>
+
+<h2>When and Complain</h2>
+
+The programmer often needs to make sure that values entered
+in an <tt>INPUT</tt> are <i>valid</i>.
+A valid value is one that makes sense.
+For instance, a value for <tt>Age</tt> can't be negative
+and can't be greater than 110.
+To test whether a value is valid and give the user a message
+if it isn't, <tt>INPUT</tt> commands can have
+<tt>WHEN</tt> and <tt>COMPLAIN</tt> parts.
+Here are two examples:
+
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Dialog Box
+<tr>	<td><tt>TEXT Name <br>
+				INPUT "Enter your name" Name<br>
+				&nbsp;&nbsp;&nbsp;WHEN Length(Name) < 2<br>
+				&nbsp;&nbsp;&nbsp;COMPLAIN "That's too short!"<br>
+				</tt>
+		<td>&nbsp;<br>&nbsp;<img src="input1b.gif">&nbsp;<br>&nbsp;
+<tr>	<td><tt>TEXT Name <br>
+                NUMBER Age = 12 <br>
+                TEXT Food = "Pizza" <br>
+                INPUT "Enter your name" Name, <br>
+                &nbsp;&nbsp;&nbsp;"Enter your age" Age, <br>
+                &nbsp;&nbsp;&nbsp;"Enter your favorite food" Food &nbsp;<br>
+				&nbsp;&nbsp;&nbsp;WHEN Age < 0<br>
+				&nbsp;&nbsp;&nbsp;COMPLAIN "Age can't be negative."<br>
+				&nbsp;&nbsp;&nbsp;WHEN Age = 0<br>
+				&nbsp;&nbsp;&nbsp;COMPLAIN "Age can't be zero."<br>
+				&nbsp;&nbsp;&nbsp;WHEN Age > 110<br>
+				&nbsp;&nbsp;&nbsp;COMPLAIN "You can't be that old."&nbsp;<br>
+				</tt>
+		<td>&nbsp;<br>&nbsp;<img src="input2b.gif">&nbsp;<br>&nbsp;
+</table>
+<p>
+
+In the first <tt>INPUT</tt> example,
+the user typed in <tt>M</tt> for <tt>Name</tt>.
+The <tt>WHEN</tt> uses the <tt>Length</tt> function to determine
+the length of the text string in the <tt>Name</tt> variable.
+The length is 1, which is less than 2, so the <tt>WHEN</tt>'s
+test is true, and the text following <tt>COMPLAIN</tt> is
+displayed at the top of the dialog box.
+<p>
+In the second <tt>INPUT</tt> example,
+the user has entered <tt>-5</tt> for <tt>Age</tt>.
+Since -5 is less than 0,
+the first <tt>WHEN</tt> test is true, and the
+corresponding <tt>COMPLAIN</tt> text is put in the dialog box.
+
+<P>
+One <tt>WHEN</tt> and one <tt>COMPLAIN</tt> always go together.
+After the <tt>WHEN</tt> is a test (such as Age = 0) that can
+be true or false.
+If the test is false, nothing happens.
+If the test is true, then the text after the
+<tt>COMPLAIN</tt> is put in the dialog box.
+If an <tt>INPUT</tt> has more than one <tt>WHEN</tt>-<tt>COMPLAIN</tt>
+pairs, it looks at them in order, and "complains" when the first
+<tt>WHEN</tt> test is true.
+Note that <tt>WHEN</tt> and <tt>COMPLAIN</tt> can only be used
+as part of an <tt>INPUT</tt> command.
+
+<h2>The NOECHO option</h2>
+
+As mentioned above, <tt>INPUT</tt> usually "echoes" the
+each prompt and value entered.  This can be stopped by
+putting <tt>NOECHO</tt> immediately after <tt>INPUT</tt>,
+as in this example:
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Dialog Box
+<tr>	<td><tt>TEXT Name <br>
+				INPUT NOECHO "Enter your name" Name &nbsp;</tt>
+		<td>&nbsp;<br>&nbsp;<img src="input1.gif">&nbsp;<br>&nbsp;
+		(no change to the dialog box)
+</table>
+
+
+
+</body>
+</html>
+

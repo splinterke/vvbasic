@@ -1,0 +1,165 @@
+<html>
+<head><title>VVBasic Overview</title></head>
+<body>
+
+VVBasic is a modern version of the classic BASIC programming
+language.  It is designed primarily for teaching computer
+science to children in fourth through ninth grades.
+With VVBasic, students learn to program in a modern style
+that includes strongly typed variables, no GOTO,
+a limited range of powerful commands, simple syntax
+rules, and a web-browser based programming environment.
+<P>
+This table provides an overview of the VVBasic commands:
+
+<p>
+<table border cellpadding=2>
+<th>Command <th>Example	<th>Description
+<tr>
+<td><tt>PRINT</tt>
+<td><tt>PRINT Name " paid " Price+Tax</tt>
+<td>Sends text to the Output Window.
+<tr>
+<td><tt>CLEAR</tt>
+<td><tt>CLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>
+<td>Clears (removes all text from) the Output Window.
+<tr>
+<td><tt>NUMBER</tt>
+<td><tt>NUMBER Cost = 17.95</tt>
+<td>Creates a numeric variable and (optionally) assigns it a value.
+<tr>
+<td><tt>TEXT</tt>
+<td><tt>TEXT Name = "Joe"</tt>
+<td>Creates a text string variable and (optionally) assigns it a value.
+<tr>
+<td><tt>LET</tt>
+<td><tt>LET X = X + 1</tt>
+<td>Assigns a value to a variable.
+<tr>
+<td><tt>IF</tt>
+<td><tt>IF A > B THEN <br>
+        &nbsp;&nbsp;&nbsp;LET MAX = A <br>
+        ELSE <br>
+        &nbsp;&nbsp;&nbsp;LET MAX = B <br>
+        ENDIF </tt>
+</tt>
+<td>Conditionally executes some commands.
+Every <tt>IF</tt> must have a matching <tt>ENDIF</tt>.
+<tr>
+<td><tt>FUNCTION</tt>
+<td><tt>
+	FUNCTION MAX(NUMBER X, NUMBER Y)<br>
+	&nbsp;&nbsp;&nbsp;IF X > Y THEN <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RETURN X <br>
+    &nbsp;&nbsp;&nbsp;ELSE <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RETURN Y <br>
+    &nbsp;&nbsp;&nbsp;ENDIF <br>
+    ENDFUNCTION
+    </tt>
+<td>Creates a user-defined function.
+Every <tt>FUNCTION</tt> must have a matching <tt>ENDFUNCTION</tt>.
+<tr>
+<td><tt>RETURN</tt>
+<td><tt>RETURN X</tt>
+<td>Specifies the "return value" of the function the <tt>RETURN</tt>
+is defined within.
+Every function
+must have at least one return value, and <tt>RETURN</tt> can only
+be used within a function definition.
+<tr>
+<td><tt>REPEAT</tt>
+<td><tt>
+	REPEAT<br>
+	&nbsp;&nbsp;&nbsp;LET X = X / 2<br>
+    &nbsp;&nbsp;&nbsp;PRINT X <br>
+    &nbsp;&nbsp;&nbsp;IF X < 0.001 THEN <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BREAK <br>
+    &nbsp;&nbsp;&nbsp;ENDIF <br>
+    ENDREPEAT
+    </tt>
+<td>Creates a "loop," so that commands between <tt>REPEAT</tt>
+and the matching <tt>ENDREPEAT</tt> can be executed multiple times.
+Every <tt>REPEAT</tt> must have a matching <tt>ENDREPEAT</tt>.
+The commands in a repeat loop are repeatedly execute until
+<tt>BREAK</tt> or <tt>RETURN</tt> is executed, or the user presses
+the Stop button.
+<tr>
+<td><tt>BREAK</tt>
+<td>See example for <tt>REPEAT</tt> above.
+<td>Ends the execution of a repeat loop.  After the <tt>BREAK</tt>
+command, the next command executed is the one following the
+<tt>ENDREPEAT</tt> statement.
+A <tt>BREAK</tt> command can only be used inside a repeat loop.
+<tr>
+<td><tt>FOR</tt>
+<td><tt>
+	FOR I = 1.0 TO 3.0 STEP 0.25<br>
+	&nbsp;&nbsp;&nbsp;PRINT I, I*I, I*I*I<br>
+    ENDFOR<br>
+    </tt>
+<td>Creates a "loop," so that commands between <tt>FOR</tt>
+and the matching <tt>ENDFOR</tt> can be executed multiple times.
+The variable <tt>I</tt> changes value each time through the
+loop, according to the starting, ending, and step values
+given.
+<tr>
+<td><tt>INPUT</tt>
+<td><tt>
+	INPUT "Enter your name: " Name,<br>
+	&nbsp;&nbsp;&nbsp;"Enter your age:" Age<br>
+	&nbsp;&nbsp;&nbsp;WHEN Age < 0 COMPLAIN "Age value too low."<br>
+	&nbsp;&nbsp;&nbsp;WHEN Age > 80 COMPLAIN "Too old."
+    </tt>
+<td>Creates a dialog box with which the user can enter values.
+<br>
+<img src="inputPanel.gif">
+<tr>
+<td><tt>PLOT</tt>
+<td><tt>
+	FOR I = -10 TO 10 STEP 0.5<br>
+	&nbsp;&nbsp;&nbsp;PLOT I, I*I<br>
+    ENDFOR<br>
+    </tt>
+<td>Specifies a point on a graph.  The graphing window and the
+graph axes are automatically created when the first <tt>PLOT</tt>
+command is executed.
+<br>
+<img src="plotWindow.gif">
+<tr>
+<td><tt>GRAPHOPTION</tt>
+<td><tt>
+	GRAPHOPTION POINTSHAPE TRIANGLE<br>
+	GRAPHOPTION POINTCOLOR RED<br>
+	GRAPHOPTION POINTSIZE 5<br>
+	GRAPHOPTION BOTTOMTEXT "Graph of homework assignments"<br>
+    </tt>
+<td>Controls the formatting of a graph window.
+<tt>GOPT</tt> is an abbreviation for <tt>GRAPHOPTION</tt>.
+<tr>
+<td><tt>function<br>call</tt>
+<td><tt>
+	NUMBER Cost = 12.3456<br>
+	TEXT Name = "Corrugated Widget"<br>
+	PRINT ToUpper(Name) " " Round(Cost,&nbsp;2)
+    </tt>
+<td>VVBasic provides a range of built-in functions
+(such as <tt>ToUpper</tt> and <tt>Round</tt>), and
+the user can define additional ones.
+<tr>
+<td><tt>REM<br>REMARK<br>COM<br>COMMENT<br>//</tt>
+<td><tt>
+	REM If cost is over $1.00, add 8% tax<br>
+	IF Cost > 1.00 THEN<br>
+	&nbsp;&nbsp;LET Cost =  Cost * 1.08 // add 8%<br>
+	ENDIF
+    </tt>
+<td><tt>//</tt>, <tt>REM</tt> or any of the other versions says that
+the remainder of the line is a comment, to be ignored by
+the computer.
+
+</table>
+<p>
+
+
+</body>
+</html>

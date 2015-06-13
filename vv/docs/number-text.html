@@ -1,0 +1,66 @@
+<html>
+<head><title>VVBasic's NUMBER and TEXT commands</title></head>
+<body>
+
+<h2>NUMBER and TEXT</h2>
+
+VVBasic allows you to create <b>variables</b> and give them values.
+A variable is a name for either a number or a text string.
+Here are some examples:
+
+<P>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>NUMBER age = 12<br>
+				TEXT name = "Sue"<br>
+				PRINT "The age of " name " is " age&nbsp;</tt>
+		<td><tt>The age of Sue is 12&nbsp;</tt>
+</table>
+
+<P>
+The first two lines of this little VVBasic program create
+two variables.  The variable <tt>age</tt> is a number with
+the value <tt>12</tt> and the variable <tt>name</tt> is a text string
+which has the value <tt>Sue</tt>.
+The PRINT command on the third line displays
+<tt>The age of Sue is 12</tt>. In a PRINT command,
+a variable is replaced by its value, so the computer replaces
+<tt>name</tt> with <tt>Sue</tt> and <tt>age</tt> with <tt>12</tt>.
+
+<p>
+
+Variable names must begin with a letter, and can only be made of
+letters, numbers, and the underline character _.  Here are some
+examples of good and bad variable names:
+
+<p>
+<center>
+<table border cellpadding=5>
+<th>Good <th>Bad
+<tr>	<td><tt>AGE</tt>	<td><tt>1DERFUL</tt>
+<tr>	<td><tt>Choice</tt>				<td><tt>User'sChoice</tt>
+<tr>	<td><tt>DAY_OF_WEEK</tt>				<td><tt>DAY OF WEEK</tt>
+<tr>	<td><tt>FavoriteColor</tt>		<td><tt>Favorite-Color</tt>
+</table>
+</center>
+
+<P>
+Text variables can only contain text strings,
+and number variables can only contain numbers.
+A variable can be created without a value, as in these examples:
+
+<P>
+<table border cellpadding=2>
+<th>VVBasic commands
+<tr>	<td><tt>NUMBER item_price&nbsp;&nbsp;&nbsp;&nbsp;</tt>
+<tr>	<td><tt>TEXT item_name</tt>
+</table>
+
+<P>If a variable does not have a value, it must be given
+one with a LET command or an INPUT command before it is printed.
+
+
+
+</body>
+</html>
+

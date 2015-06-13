@@ -1,0 +1,76 @@
+<html>
+<head><title>VVBasic's PRINT command</title></head>
+<body>
+<h2>PRINT</h2>
+
+Use the <tt>PRINT</tt> command to make the computer display something in the output window.
+(PRINT in VVBasic does not mean putting ink on paper.)
+Here are some examples using PRINT:
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>PRINT "I am a computer."</tt>	<td><tt>I am a computer.</tt>
+<tr>	<td><tt>PRINT 2 + 3</tt>				<td><tt>5</tt>
+<tr>	<td><tt>PRINT "2 + 3"</tt>				<td><tt>2 + 3</tt>
+<tr>	<td><tt>PRINT "2 + 3 = " 2 + 3</tt>		<td><tt>2 + 3 = 5</tt>
+</table>
+<p>
+In the first example, notice that <tt>"I am a computer."</tt>
+has quotation marks around it.
+(Make sure you press the shift key to type a quotation mark.
+You can't type two apostrophes.)
+Anything typed in between two
+quotation marks is called a <b>text string</b>, or just <b>text</b>,
+or just a <b>string</b>.  When you tell the computer to print a
+text string, the computer prints it out exactly as you typed it,
+without the surrounding quotation marks.
+
+<p>
+
+In the second example, the computer displays <tt>5</tt>, since
+five is the sum of two plus three.  When the computer sees a
+math operation symbol such as + (plus), - (minus), * (use an
+asterisk for multiplication), or / (use a slash for divide),
+it does the calculation before printing out the result.
+
+<p>
+
+In the third example, the computer displays <tt>2 + 3</tt>.
+It doesn’t do the addition, because the quotation marks
+around <tt>"2 + 3"</tt> tell the computer to print out the
+text string exactly as it is.
+
+<p>
+
+In the fourth example, the computer prints <tt>2 + 3 = 5</tt>.
+It prints out <tt>2 + 3 =</tt> because that text string is in
+quotation marks.  It prints out <tt>5</tt> because five is the
+sum of two and three.   Being able to mix text strings and
+arithmetic is very useful.
+
+<p>
+
+You can use a comma in a PRINT command to line items up in columns.
+Each comma tells the PRINT command to start a new column.
+For instance, here is a two line
+program and its output:
+<p>
+
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>	<td><tt>PRINT "Cost of a telephone:", 24.95 <br>
+				PRINT "Cost of a car:", 19995.00</tt>
+		<td><tt>Cost of a telephone:&nbsp;&nbsp;24.95 <br>
+				Cost of a car:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19995.00</tt>
+</table>
+
+<h2>CLEAR</h2>
+
+A useful VVBasic command is CLEAR.  This command clears the
+output window.  Many programmers like to put a CLEAR command
+at the start of every program.
+
+
+
+</body>
+</html>

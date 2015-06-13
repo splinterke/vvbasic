@@ -1,0 +1,154 @@
+<html>
+<head><title>VVBasic's FOR command</title></head>
+<body>
+<h2>FOR and ENDFOR</h2>
+
+Use the <tt>FOR</tt> command to create a <i>loop</i>,
+which is one or more statements executed multiple times.
+For example:
+
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>
+<td><tt>
+    PRINT "Table of squares:" <br>
+    FOR X = 1 TO 10 <br>
+    &nbsp;&nbsp;PRINT X, X*X &nbsp; <br>
+    ENDFOR <br>
+    PRINT "Done." <br>
+    </tt>
+<td><tt>
+Table of squares: <br>
+    1  &nbsp;&nbsp;&nbsp;  1 <br>
+    2  &nbsp;&nbsp;&nbsp;  4 <br>
+    3  &nbsp;&nbsp;&nbsp;  9 <br>
+    4  &nbsp;&nbsp;&nbsp;  16 <br>
+    5  &nbsp;&nbsp;&nbsp;  25 <br>
+    6  &nbsp;&nbsp;&nbsp;  36 <br>
+    7  &nbsp;&nbsp;&nbsp;  49 <br>
+    8  &nbsp;&nbsp;&nbsp;  64 <br>
+    9  &nbsp;&nbsp;&nbsp;  81 <br>
+    10 &nbsp;&nbsp;        100 <br>
+    Done.
+    </tt>
+</table>
+
+<P>
+In this example the <tt>PRINT</tt> statement in the
+<tt>FOR</tt> - <tt>ENDFOR</tt> block was executed ten times,
+with the value of variable <tt>X</tt> changing from 1 to 2 to 3 and so
+on up to 10.
+Every <tt>FOR</tt> command has a matching <tt>ENDFOR</tt>.
+Following the word <tt>FOR</tt> is the variable that will change value,
+in this example <tt>X</tt>.
+This variable is always a number type (not a text string).
+After the equals sign is the starting value of the variable,
+followed by <tt>TO</tt>, followed by the ending value of the variable.
+1 is added to the variable each time through the loop,
+until the variable is larger than the ending value.
+Then the command following the <tt>ENDFOR</tt> (if there is one)
+is executed.
+
+<p>
+Notice that the lines between <tt>FOR</tt> and
+<tt>ENDFOR</tt> are indented.  This is not required by
+the computer, but it is extremely helpful for making the
+program readable.
+
+
+
+<P>
+
+If you don't want the computer to add 1 each time,
+you can specify a different value using <tt>STEP</tt>,
+as in this example:
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>
+<td><tt>
+	FOR X = 1 TO 10 STEP 2.5 &nbsp;<br>
+	&nbsp;&nbsp;PRINT X, X*X*X <br>
+	&nbsp;&nbsp;IF X*X*X > 100 THEN <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;PRINT "Getting big!" <br>
+	&nbsp;&nbsp;ENDIF <br>
+	ENDFOR <br>
+    </tt>
+<td><tt>
+	1	&nbsp;&nbsp;&nbsp; 1 <br>
+	3.5	&nbsp;&nbsp;&nbsp; 42.875 <br>
+	6.0	&nbsp;&nbsp;&nbsp; 216 <br>
+	Getting big! <br>
+	8.5	&nbsp;&nbsp;&nbsp; 614.125 &nbsp;<br>
+	Getting big! <br>
+    </tt>
+</table>
+
+<P>
+
+Instead of increasing each time through the loop,
+the variable can decrease, if the starting value
+is greater than the ending value.
+A negative <tt>STEP</tt> amount can be given;
+otherwise -1 is added to the variable each time
+through the loop.
+
+<p>
+<table border cellpadding=2>
+<th>VVBasic commands <th>Output
+<tr>
+<td><tt>
+	NUMBER SqRootOf2 = Pow(2, 0.5) <br>
+	FOR NumDigits = 10 to 0 <br>
+	&nbsp;&nbsp;PRINT Round(SqRootOf2, NumDigits) <br>
+	ENDFOR <br>
+    </tt>
+<td><tt>
+	1.4142135624 <br>
+	1.414213562 <br>
+	1.41421356 <br>
+	1.4142136 <br>
+	1.414214 <br>
+	1.41421 <br>
+	1.4142 <br>
+	1.414 <br>
+	1.41 <br>
+	1.4 <br>
+	1 <br>
+    </tt>
+<tr>
+<td><tt>
+	NUMBER HalloweenCandies <br>
+	NUMBER EatPerDay <br>
+	INPUT "How many candies: " HalloweenCandies, <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Each day you eat: " EatPerDay <br>
+	NUMBER DayOfNovember = 1 <br>
+	FOR Remaining = HalloweenCandies TO 1 STEP&nbsp;(0&nbsp;-&nbsp;EatPerDay) <br>
+	&nbsp;&nbsp;PRINT "Nov. " DayOfNovember ": " Remaining " remaining" <br>
+	&nbsp;&nbsp;LET DayOfNovember = DayOfNovember + 1 <br>
+	ENDFOR <br>
+	PRINT "All gone on Nov. " DayOfNovember <br>
+    </tt>
+<td><tt>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How many candies:  53 <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each day you eat:  9 <br>
+	Nov. 1: 53 remaining <br>
+	Nov. 2: 44 remaining <br>
+	Nov. 3: 35 remaining <br>
+	Nov. 4: 26 remaining <br>
+	Nov. 5: 17 remaining <br>
+	Nov. 6: 8 remaining <br>
+	All gone on Nov. 7 <br>
+    </tt>
+</table>
+
+<P>
+In the second example above, we want to subtract <tt>EatPerDay</tt>
+each time through the loop.  Since the user enters a positive
+number for that variable, the code has <tt>STEP&nbsp;(0&nbsp;-&nbsp;EatPerDay)</tt>,
+which converts the STEP amount to a negative number.
+
+
+</body>
+</html>
